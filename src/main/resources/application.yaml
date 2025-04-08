@@ -40,10 +40,11 @@ logging:
     com.aegis: DEBUG
 
 # OpenAPI/Swagger configuration
-springdoc:
-  api-docs:
-    path: /docs
-  swagger-ui:
-    path: /swagger-ui
-    operations-sorter: method
-    tags-sorter: alpha
+#springdoc:
+#  api-docs:
+#    enabled: true
+#    path: /docs
+#  swagger-ui:
+#    path: /swagger-ui
+#    operations-sorter: method
+#    tags-sorter: alpha
