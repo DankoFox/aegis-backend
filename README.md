@@ -6,7 +6,7 @@ This repository contains the backend API for the SafeSpace application, built wi
 
 ## Requirements
 
-- Java JDK 17 or newer
+- Java JDK 21 or newer
 - PostgreSQL database server
 - Maven (optional if using the Maven wrapper)
 
@@ -65,10 +65,31 @@ The Swagger UI provides a complete list of all available endpoints with request/
 
 ### Tags API
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET    | /api/tags | Get all tags |
-| GET    | /api/tags/{id} | Get a specific tag by ID |
-| POST   | /api/tags | Create a new tag |
-| PUT    | /api/tags/{id} | Update an existing tag |
-| DELETE | /api/tags/{id} | Delete a tag |
+| Method | Endpoint              | Description                  |
+|--------|-----------------------|------------------------------|
+| GET    | /api/tags             | Get all tags                 |
+| GET    | /api/tags/{id}        | Get a specific tag by ID     |
+| POST   | /api/tags             | Create a new tag             |
+| PUT    | /api/tags/{id}        | Update an existing tag       |
+| DELETE | /api/tags/{id}        | Delete a tag                 |
+
+### Locations API
+
+| Method | Endpoint                 | Description                     |
+|--------|--------------------------|---------------------------------|
+| GET    | /api/locations           | Get all locations               |
+| GET    | /api/locations/{id}      | Get a specific location by ID   |
+| POST   | /api/locations           | Create a new location           |
+| PUT    | /api/locations/{id}      | Update an existing location     |
+| DELETE | /api/locations/{id}      | Delete a location               |
+
+### LocationTags API
+
+| Method | Endpoint                                     | Description                                  |
+|--------|----------------------------------------------|----------------------------------------------|
+| GET    | /api/location-tags                           | Get all location-tag mappings                |
+| POST   | /api/location-tags                           | Create a new location-tag mapping            |
+| DELETE | /api/location-tags/{id}                      | Delete a location-tag mapping                |
+| GET    | /api/location-tags/tags-by-location/{id}     | Get all tags associated with a location      |
+| GET    | /api/location-tags/locations-by-tag/{id}     | Get all locations associated with a tag      |
+
