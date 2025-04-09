@@ -93,3 +93,12 @@ The Swagger UI provides a complete list of all available endpoints with request/
 | GET    | /api/location-tags/tags-by-location/{id}     | Get all tags associated with a location      |
 | GET    | /api/location-tags/locations-by-tag/{id}     | Get all locations associated with a tag      |
 
+### Reviews API
+
+| Method | Endpoint                                     | Description                                     |
+|--------|----------------------------------------------|-------------------------------------------------|
+| POST   | /api/reviews                                 | Create a new review                             |
+| GET    | /api/reviews/by-user/{userId}                | Get all reviews by a specific user              |
+| GET    | /api/reviews/by-location/{locationId}        | Get all reviews for a specific location         |
+| GET    | /api/reviews/average-rating/{locationId}     | Get the average rating for a specific location  |
+
