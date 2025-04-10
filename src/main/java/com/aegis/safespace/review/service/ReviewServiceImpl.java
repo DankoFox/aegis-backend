@@ -69,13 +69,19 @@ public class ReviewServiceImpl implements ReviewService {
     public LocationRatingDTO getLocationRating(UUID locationId) {
         Location location = locationRepository.findById(locationId)
                 .orElseThrow(() -> new EntityNotFoundException("Location not found with id: " + locationId));
+        Double average = calculateLocationAvgRating(locationId);
+
+        return new LocationRatingDTO(location.getId(), location.getName(), average);
+    }
+
+    public Double calculateLocationAvgRating(UUID locationId) {
+        Location location = locationRepository.findById(locationId)
+                .orElseThrow(() -> new EntityNotFoundException("Location not found with id: " + locationId));
 
         Double average = reviewRepository.findAverageRatingByLocationId(locationId);
         if (average == null) average = 0.0;
         average = Math.round(average * 10.0) / 10.0;
 
-        return new LocationRatingDTO(location.getId(), location.getName(), average);
+        return average;
     }
-
-
 }

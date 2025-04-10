@@ -1,6 +1,8 @@
 package com.aegis.safespace.location.controller;
 
 import com.aegis.safespace.location.dto.CreateLocationDTO;
+import com.aegis.safespace.location.dto.DetailLocationDTO;
+import com.aegis.safespace.location.dto.SummaryLocationDTO;
 import com.aegis.safespace.location.dto.UpdateLocationDTO;
 import com.aegis.safespace.location.model.Location;
 import com.aegis.safespace.location.service.LocationService;
@@ -24,12 +26,12 @@ public class LocationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Location>> getAllLocations() {
+    public ResponseEntity<List<SummaryLocationDTO>> getAllLocations() {
         return ResponseEntity.ok(locationService.getAllLocations());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Location> getLocationById(@PathVariable UUID id) {
+    public ResponseEntity<DetailLocationDTO> getLocationById(@PathVariable UUID id) {
         return ResponseEntity.ok(locationService.getLocationById(id));
     }
 
