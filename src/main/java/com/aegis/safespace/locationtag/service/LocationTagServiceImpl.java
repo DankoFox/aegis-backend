@@ -108,4 +108,20 @@ public class LocationTagServiceImpl implements LocationTagService {
                 })
                 .toList();
     }
+
+    // UTILS SERVICES
+    @Override
+    @Transactional
+    public void deleteByLocationAndTag(UUID locationId, UUID tagId) {
+        Location location = locationRepository.findById(locationId)
+                .orElseThrow(() -> new EntityNotFoundException("Location not found"));
+        Tag tag = tagRepository.findById(tagId)
+                .orElseThrow(() -> new EntityNotFoundException("Tag not found"));
+
+        LocationTag locationTag = locationTagRepository.findByLocationAndTag(location, tag)
+                .orElseThrow(() -> new EntityNotFoundException("LocationTag not found for the given location and tag"));
+
+        locationTagRepository.delete(locationTag);
+    }
+
 }

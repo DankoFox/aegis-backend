@@ -16,4 +16,5 @@ public interface LocationTagService {
     void delete(UUID id);
     List<TagDTO> getTagsByLocation(UUID locationId);
     List<LocationDTO> getLocationsByTag(UUID tagId);
+    void deleteByLocationAndTag(UUID locationId, UUID tagId);
 }

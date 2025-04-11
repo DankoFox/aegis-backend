@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -14,5 +15,5 @@ public interface LocationTagRepository extends JpaRepository<LocationTag, UUID> 
     boolean existsByLocationAndTag(Location location, Tag tag);
     List<LocationTag> findByLocation_Id(UUID locationId);
     List<LocationTag> findByTag_Id(UUID tagId);
-
+    Optional<LocationTag> findByLocationAndTag(Location location, Tag tag);
 }

@@ -1,10 +1,12 @@
 package com.aegis.safespace.review.service;
 
+import com.aegis.safespace.ai.AIAnalysisService;
 import com.aegis.safespace.location.model.Location;
 import com.aegis.safespace.location.repository.LocationRepository;
 import com.aegis.safespace.review.dto.CreateReviewDTO;
 import com.aegis.safespace.review.dto.LocationRatingDTO;
 import com.aegis.safespace.review.dto.ReviewDTO;
+import com.aegis.safespace.review.event.ReviewCreatedEvent;
 import com.aegis.safespace.review.model.Review;
 import com.aegis.safespace.review.repository.ReviewRepository;
 import com.aegis.safespace.user.model.User;
@@ -12,6 +14,8 @@ import com.aegis.safespace.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +31,7 @@ public class ReviewServiceImpl implements ReviewService {
     private final ReviewRepository reviewRepository;
     private final UserRepository userRepository;
     private final LocationRepository locationRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
     @Override
     public ReviewDTO createReview(CreateReviewDTO dto) {
@@ -41,6 +46,10 @@ public class ReviewServiceImpl implements ReviewService {
                 .build();
 
         var saved = reviewRepository.save(review);
+
+        // Publish event after review is saved
+        eventPublisher.publishEvent(new ReviewCreatedEvent(location.getId()));
+
         return toDTO(saved);
     }
 
