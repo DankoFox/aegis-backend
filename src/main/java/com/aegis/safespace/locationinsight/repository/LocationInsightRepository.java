@@ -1,4 +1,4 @@
-package com.aegis.safespace.locationinsight.repository;
-
-public class LocationInsightRepository {
-}
+//package com.aegis.safespace.locationinsight.repository;
+//
+//public class LocationInsightRepository {
+//}
