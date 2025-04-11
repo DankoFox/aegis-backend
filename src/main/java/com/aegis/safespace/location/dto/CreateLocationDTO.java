@@ -1,5 +1,6 @@
 package com.aegis.safespace.location.dto;
 
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
@@ -15,6 +16,9 @@ public class CreateLocationDTO {
 
     @NotBlank
     private String address;
+
+    @Nullable
+    private String thumbnailImage;
 
     @NotNull
     private BigDecimal latitude;

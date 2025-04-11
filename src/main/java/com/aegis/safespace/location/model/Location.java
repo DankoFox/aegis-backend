@@ -41,6 +41,9 @@ public class Location {
     @Column(name = "longitude", nullable = false, precision = 11, scale = 8)
     private BigDecimal longitude;
 
+    @Column(name = "thumbnail_image", nullable = false, columnDefinition = "TEXT DEFAULT 'https://media.istockphoto.com/id/1251099241/vi/anh/t%C3%B4i-kh%C3%B4ng-bi%E1%BA%BFt-ch%C3%A2n-dung-nam-thanh-ni%C3%AAn-b%E1%BB%91i-r%E1%BB%91i-m%E1%BA%B7c-%C3%A1o-thun-xanh-%C4%91%E1%BB%A9ng-nh%C3%AAn-vai-dang-tay-c%C3%A1ch-ly.jpg?s=1024x1024&w=is&k=20&c=-imtbRU3tEpeMMyS70abQrXoy1lIxSXBLnoZjiWaPXk='")
+    private String thumbnailImage;
+
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

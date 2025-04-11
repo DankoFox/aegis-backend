@@ -44,6 +44,7 @@ public class LocationServiceImpl implements LocationService {
                     location.getId(),
                     location.getName(),
                     location.getAddress(),
+                    location.getThumbnailImage(),
                     location.getLatitude(),
                     location.getLongitude(),
                     averageRating,
@@ -65,6 +66,7 @@ public class LocationServiceImpl implements LocationService {
                 location.getId(),
                 location.getName(),
                 location.getAddress(),
+                location.getThumbnailImage(),
                 location.getLatitude(),
                 location.getLongitude(),
                 averageRating,
@@ -75,29 +77,45 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public Location createLocation(CreateLocationDTO dto) {
+        String fallbackImage = "https://media.istockphoto.com/id/1251099241/vi/anh/t%C3%B4i-kh%C3%B4ng-bi%E1%BA%BFt-ch%C3%A2n-dung-nam-thanh-ni%C3%AAn-b%E1%BB%91i-r%E1%BB%91i-m%E1%BA%B7c-%C3%A1o-thun-xanh-%C4%91%E1%BB%A9ng-nh%C3%AAn-vai-dang-tay-c%C3%A1ch-ly.jpg?s=1024x1024&w=is&k=20&c=-imtbRU3tEpeMMyS70abQrXoy1lIxSXBLnoZjiWaPXk=";
+
         Location location = Location.builder()
                 .googlePlaceId(dto.getGooglePlaceId())
                 .name(dto.getName())
                 .address(dto.getAddress())
                 .latitude(dto.getLatitude())
                 .longitude(dto.getLongitude())
+                .thumbnailImage(
+                        (dto.getThumbnailImage() == null || dto.getThumbnailImage().isBlank())
+                                ? fallbackImage
+                                : dto.getThumbnailImage()
+                )
                 .build();
 
         return locationRepository.save(location);
     }
+
 
     @Override
     public Location updateLocation(UUID id, UpdateLocationDTO dto) {
         Location location = locationRepository.findById(id).orElseThrow(() ->
                 new EntityNotFoundException("Location not found with id: " + id));
 
+        String fallbackImage = "https://media.istockphoto.com/id/1251099241/vi/anh/t%C3%B4i-kh%C3%B4ng-bi%E1%BA%BFt-ch%C3%A2n-dung-nam-thanh-ni%C3%AAn-b%E1%BB%91i-r%E1%BB%91i-m%E1%BA%B7c-%C3%A1o-thun-xanh-%C4%91%E1%BB%A9ng-nh%C3%AAn-vai-dang-tay-c%C3%A1ch-ly.jpg?s=1024x1024&w=is&k=20&c=-imtbRU3tEpeMMyS70abQrXoy1lIxSXBLnoZjiWaPXk=";
+
         location.setGooglePlaceId(dto.getGooglePlaceId());
         location.setName(dto.getName());
         location.setAddress(dto.getAddress());
+        location.setThumbnailImage(
+                (dto.getThumbnailImage() == null || dto.getThumbnailImage().isBlank())
+                        ? fallbackImage
+                        : dto.getThumbnailImage()
+        );
         location.setLatitude(dto.getLatitude());
         location.setLongitude(dto.getLongitude());
         return locationRepository.save(location);
     }
+
 
     @Override
     public void deleteLocation(UUID id) {

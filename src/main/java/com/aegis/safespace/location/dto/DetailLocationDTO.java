@@ -17,6 +17,7 @@ public class DetailLocationDTO {
     private UUID id;
     private String name;
     private String address;
+    private String thumbnailImage;
     private BigDecimal latitude;
     private BigDecimal longitude;
     private Double averageRating;
