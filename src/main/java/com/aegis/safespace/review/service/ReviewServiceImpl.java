@@ -7,6 +7,7 @@ import com.aegis.safespace.review.dto.LocationRatingDTO;
 import com.aegis.safespace.review.dto.ReviewDTO;
 import com.aegis.safespace.review.model.Review;
 import com.aegis.safespace.review.repository.ReviewRepository;
+import com.aegis.safespace.user.model.User;
 import com.aegis.safespace.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -58,6 +59,8 @@ public class ReviewServiceImpl implements ReviewService {
                 review.getId(),
                 review.getLocation().getId(),
                 review.getUser().getId(),
+                review.getUser().getUsername(),
+                review.getUser().getProfilePicture(),
                 review.getRating(),
                 review.getComment(),
                 review.getCreatedAt(),

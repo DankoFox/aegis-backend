@@ -7,6 +7,8 @@ public record ReviewDTO(
         UUID id,
         UUID locationId,
         UUID userId,
+        String username,
+        String profilePicture,
         short rating,
         String comment,
         LocalDateTime createdAt,
