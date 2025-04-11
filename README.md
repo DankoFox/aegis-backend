@@ -57,7 +57,7 @@ The application will start on port 8080 by default.
 
 Once the application is running, you can access the interactive API documentation at:
 
-**[http://localhost:8080/api/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)**
+**[Swagger API documentation](http://localhost:8080/api/swagger-ui/index.html)**
 
 The Swagger UI provides a complete list of all available endpoints with request/response schemas and the ability to test API calls directly.
 
