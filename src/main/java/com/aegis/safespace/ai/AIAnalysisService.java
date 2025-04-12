@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.*;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,6 +34,7 @@ public class AIAnalysisService {
     private static final double SAFE_THRESH_HOLD = 0.38;
 
     @EventListener
+    @Async
     public void handleReviewCreatedEvent(ReviewCreatedEvent event) {
         try {
             analyzeLocation(event.getLocationId());
