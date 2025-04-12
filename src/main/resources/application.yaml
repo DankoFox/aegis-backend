@@ -22,6 +22,10 @@ security:
     secret: ${JWT_SECRET}
     expiration-ms: ${JWT_EXPIRATION_MS}
 
+ai:
+  host:
+    url: ${AI_HOST_URL}
+
 #google:
 #  maps:
 #    api-key: ${env.GOOGLE_MAPS_API_KEY}

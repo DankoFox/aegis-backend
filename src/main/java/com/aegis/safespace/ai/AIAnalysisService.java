@@ -7,6 +7,7 @@ import com.aegis.safespace.review.event.ReviewCreatedEvent;
 import com.aegis.safespace.review.service.ReviewService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.*;
@@ -25,8 +26,9 @@ public class AIAnalysisService {
     private final LocationTagService locationTagService;
     private final RestTemplate restTemplate = new RestTemplate();
 
-    // Make this configurable later via application.properties
-    private static final String AI_HOST_URL = "http://172.16.1.212:5000/analyze-review";
+    @Value("${ai.host.url}")
+    private String AI_HOST_URL;
+//    private String AI_HOST_URL = "http://172.16.1.212:5000/analyze-review";
 
     private static final UUID LGBT_TAG_ID = UUID.fromString("955e8a63-802b-4ae4-923a-977ebc7cfda2");
     private static final UUID BLACK_TAG_ID = UUID.fromString("b3c20683-4afa-4fda-b6fc-3a995f6c2568");

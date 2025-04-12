@@ -19,14 +19,16 @@ git clone https://github.com/DankoFox/aegis-backend.git
 cd safespace-backend
 ```
 
-### 2. Configure Database
+### 2. Configure Database & AI
 
-Add `.env` file and setup the database connection properties:
+Add `.env` file and setup the database and AI connection properties:
 
 ```properties
 DB_URL=jdbc:postgresql://ep-yellow-union-a1bf4cav-pooler.ap-southeast-1.aws.neon.tech:5432/neondb
 DB_USERNAME=neondb_owner
 DB_PASSWORD=.................
+
+AI_HOST_URL=...<URL OF AEGIS AI PIPELILE>...
 ```
 
 ### 3. Build and Run the Application
